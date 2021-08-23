@@ -38,15 +38,13 @@ ydl_vid = {"format": "136", "outtmpl": PATH + "/vid/%(id)s.%(ext)s"}
 def start(update, context):
     context.bot.send_message(
         chat_id=update.effective_chat.id,
-        text="",
+        text='Welcome to ProWily MP3 Bot\nTo convert Youtube video to MP3 file just write ".p3 URL"',
     )
 
 
 def echo(update, context):
 
-    context.bot.send_message(
-        chat_id=update.effective_chat.id, text=""
-    )
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Wait Please")
 
     file = ""
     url: str = update.message.text
@@ -73,9 +71,7 @@ def echo(update, context):
                 supports_streaming=True,
             )
         except telegram.error.NetworkError:
-            context.bot.send_message(
-                chat_id=update.effective_chat.id, text=""
-            )
+            context.bot.send_message(chat_id=update.effective_chat.id, text="")
 
     # os.remove(file)
     context.bot.send_message(chat_id=update.effective_chat.id, text="")
